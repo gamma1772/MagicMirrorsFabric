@@ -24,20 +24,21 @@ public class Teleporter {
 
         RegistryKey<World> spawnDimension = player.getSpawnPointDimension();
 
+        serverWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, pos, 1, player.getId());
         player.stopRiding();
 
         if (canTraverseDimensions) {
-            player.teleport(player.getServer().getWorld(spawnDimension), spawnPoint.getX() + 0.5F, spawnPoint.getY() + 0.6F, spawnPoint.getZ() + 0.5F, player.getYaw(), player.getPitch());
+            player.teleport(playerEntity.getServer().getWorld(spawnDimension), spawnPoint.getX() + 0.5F, spawnPoint.getY() + 0.6F, spawnPoint.getZ() + 0.5F, player.getYaw(), player.getPitch());
         }
         else {
             if (player.getSpawnPointDimension().equals(serverWorld.getRegistryKey())) {
-                player.setPosition(spawnPoint.getX() + 0.5F, spawnPoint.getY() + 0.5F, spawnPoint.getZ() + 0.5F);
+                player.teleport(spawnPoint.getX() + 0.5F, spawnPoint.getY() + 0.5F, spawnPoint.getZ() + 0.5F);
             }
             else {
                 player.sendMessage(new TranslatableText("info.magicmirrors.dimension"), true);
             }
         }
-        serverWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, pos, 1, player.getId());
+
     }
 
     /**

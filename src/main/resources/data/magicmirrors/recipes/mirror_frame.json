@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "III",
+    "INI",
+    "III"
+  ],
+  "key":
+  {
+    "I":
+    {
+      "tag": "forge:nuggets/iron"
+    },
+    "N":
+    {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result":
+  {
+    "item": "magicmirror:mirror_frame",
+    "count": 1
+  }
+}

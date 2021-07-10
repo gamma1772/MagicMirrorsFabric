@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "EI ",
+    "IGI",
+    " IE"
+  ],
+  "key":
+  {
+    "G":
+    {
+      "item": "minecraft:glass_pane"
+    },
+    "I":
+    {
+      "tag": "forge:nuggets/iron"
+    },
+    "E":
+    {
+      "item": "minecraft:ender_eye"
+    }
+  },
+  "result":
+  {
+    "item": "magicmirror:enchanted_mirror",
+    "count": 1
+  }
+}

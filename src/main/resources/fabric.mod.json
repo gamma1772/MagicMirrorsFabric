@@ -1,30 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "magicmirrors",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Magic Mirrors",
+  "description": "Teleport to your spawn point almost instantly!",
   "authors": [
-    "Me!"
+    "Gamma1772 (CodenameRevy)"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://gamma1772.github.io/",
+    "sources": "https://github.com/gamma1772/MagicMirrorsFabric"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "MIT",
+  "icon": "assets/magicmirrors/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.gamma1772.magicmirrors.MagicMirrors"
+    ],
+    "client": [
+      "com.gamma1772.magicmirrors.client.MagicMirrorsClient"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.11.3",
