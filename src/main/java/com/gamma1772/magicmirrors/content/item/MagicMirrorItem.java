@@ -16,10 +16,17 @@ import java.util.Random;
 
 public class MagicMirrorItem extends Item {
     private final boolean canTraverseDimensions;
-
+    private final int cooldown;
     public MagicMirrorItem(Settings settings, boolean canTraverseDimensions) {
         super(settings);
         this.canTraverseDimensions = canTraverseDimensions;
+        this.cooldown = 200;
+    }
+
+    public MagicMirrorItem(Settings settings, boolean canTraverseDimensions, int cooldown) {
+        super(settings);
+        this.canTraverseDimensions = canTraverseDimensions;
+        this.cooldown = cooldown;
     }
 
     @Override
@@ -45,15 +52,16 @@ public class MagicMirrorItem extends Item {
         BlockPos spawnPos = player.getSpawnPointPosition(); //Gets user's respawn position
         RegistryKey<World> spawnWorldKey = player.getSpawnPointDimension(); //Gets the respawn dimension
         BlockPos currentPos = player.getBlockPos();
-
+        ((ServerPlayerEntity) user).getItemCooldownManager().set(this, cooldown);
         if (spawnPos != null)
         {
-            if (world.getRegistryKey() == spawnWorldKey) {
-                Teleporter.teleportToSpawnPoint(player, world, canTraverseDimensions);
-
-                //world.playSound(null, currentPos.getX(), currentPos.getY(), currentPos.getZ(), SoundInit.TELEPORT.get(), SoundCategory.PLAYERS, 1f, 1f);
-                //world.playSound(null, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), SoundInit.TELEPORT.get(), SoundCategory.PLAYERS, 1f, 1f);
-            }
+            Teleporter.teleportToSpawnPoint(player, world, canTraverseDimensions);
+//            if (world.getRegistryKey() == spawnWorldKey) {
+//
+//
+//                //world.playSound(null, currentPos.getX(), currentPos.getY(), currentPos.getZ(), SoundInit.TELEPORT.get(), SoundCategory.PLAYERS, 1f, 1f);
+//                //world.playSound(null, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), SoundInit.TELEPORT.get(), SoundCategory.PLAYERS, 1f, 1f);
+//            }
 //            else {
 //                //player.sendStatusMessage(new TranslationTextComponent("info.magicmirror.power"), true);
 //                //world.playSound(null, currentPos.getX(), currentPos.getY(), currentPos.getZ(), SoundInit.MIRROR_DISCHARGE.get(), SoundCategory.PLAYERS, 1f, 1f);
@@ -99,7 +107,7 @@ public class MagicMirrorItem extends Item {
     }
 
     /**
-     * Can the ite mbe used to teleport from ex: Nether if the spawn point is in another dimension
+     * Can the item be used to teleport from ex: Nether if the spawn point is in another dimension
      * */
     public boolean getCanTraverseDimensions() {
         return canTraverseDimensions;
