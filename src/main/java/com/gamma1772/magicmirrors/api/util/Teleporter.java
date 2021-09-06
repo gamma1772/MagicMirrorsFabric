@@ -27,15 +27,15 @@ public class Teleporter {
             TeleportUtil.changeDimension(playerEntity, destination, spawnPoint);
             TeleportUtil.teleportToPos(playerEntity, spawnPoint);
 
-            player.sendMessage(new TranslatableText("info.magicmirrors.dimension_traverse"), true);
+            //player.sendMessage(new TranslatableText("info.magicmirrors.dimension_traverse"), true);
         }
         else {
             if (player.getSpawnPointDimension().equals(serverWorld.getRegistryKey())) {
                 TeleportUtil.teleportToPos(playerEntity, spawnPoint);
-                player.sendMessage(new TranslatableText("info.magicmirrors.local_teleport"), true);
+                //player.sendMessage(new TranslatableText("info.magicmirrors.local_teleport"), true);
             }
             else {
-                player.sendMessage(new TranslatableText("info.magicmirrors.dimension"), true);
+                //player.sendMessage(new TranslatableText("info.magicmirrors.dimension"), true);
             }
         }
 
