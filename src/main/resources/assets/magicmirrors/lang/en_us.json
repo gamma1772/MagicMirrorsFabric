@@ -1,18 +1,18 @@
 {
-  "item.magicmirror.magic_mirror": "Magic Mirror",
+  "item.magicmirrors.magic_mirror": "Magic Mirror",
 
-  "item.magicmirror.dimensional_mirror": "Dimensional Mirror",
+  "item.magicmirrors.dimensional_mirror": "Dimensional Mirror",
 
-  "item.magicmirror.dimension_crystal": "Dimension Crystal",
-  "item.magicmirror.mirror_frame": "Mirror Frame",
-  "item.magicmirror.enchanted_mirror": "Enchanted Mirror",
+  "item.magicmirrors.dimension_crystal": "Dimension Crystal",
+  "item.magicmirrors.mirror_frame": "Mirror Frame",
+  "item.magicmirrors.enchanted_mirror": "Enchanted Mirror",
 
 
-  "info.magicmirror.spawnNotFound": "Spawn point not found!",
-  "info.magicmirror.power": "This mirror is not powerful enough for cross-dimensional travel!",
+  "info.magicmirrors.spawnNotFound": "Spawn point not found!",
+  "info.magicmirrors.power": "This mirror is not powerful enough for cross-dimensional travel!",
 
-  "subtitle.magicmirror.teleport": "Teleport",
-  "subtitle.magicmirror.mirror_discharge": "Mirror Discharge",
+  "subtitle.magicmirrors.teleport": "Teleport",
+  "subtitle.magicmirrors.mirror_discharge": "Mirror Discharge",
 
   "itemGroup.magic_mirrors": "Magic Mirrors"
 }

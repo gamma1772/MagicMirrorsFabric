@@ -1,4 +1,4 @@
-package com.gamma1772.magicmirrors.content.item;
+package com.gamma1772.magicmirrors.common.content.item;
 
 import com.gamma1772.magicmirrors.api.util.Teleporter;
 import net.minecraft.entity.LivingEntity;
@@ -85,8 +85,9 @@ public class MagicMirrorItem extends Item {
      * */
     @Override
     public int getMaxUseTime(ItemStack stack) {
-        return 25;
+        return 30;
     }
+
 
     @Override
     public Rarity getRarity(ItemStack stack) {

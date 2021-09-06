@@ -1,9 +1,6 @@
-package com.gamma1772.magicmirrors.init;
+package com.gamma1772.magicmirrors.common.init;
 
-import com.gamma1772.magicmirrors.MagicMirrors;
 import com.gamma1772.magicmirrors.api.registry.RegisterItem;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class ModRegistry {
     public static void setup() {

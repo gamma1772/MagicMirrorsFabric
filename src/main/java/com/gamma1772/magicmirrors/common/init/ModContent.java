@@ -1,8 +1,7 @@
-package com.gamma1772.magicmirrors.init;
+package com.gamma1772.magicmirrors.common.init;
 
-import com.gamma1772.magicmirrors.content.item.MagicMirrorItem;
+import com.gamma1772.magicmirrors.common.content.item.MagicMirrorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Rarity;
