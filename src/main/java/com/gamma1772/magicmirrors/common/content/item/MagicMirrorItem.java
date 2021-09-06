@@ -1,6 +1,6 @@
 package com.gamma1772.magicmirrors.common.content.item;
 
-import com.gamma1772.magicmirrors.api.util.Teleporter;
+import com.gamma1772.magicmirrors.api.util.teleport.Teleporter;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

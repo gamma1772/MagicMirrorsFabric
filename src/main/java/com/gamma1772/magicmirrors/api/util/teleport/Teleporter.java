@@ -1,4 +1,4 @@
-package com.gamma1772.magicmirrors.api.util;
+package com.gamma1772.magicmirrors.api.util.teleport;
 
 import com.gamma1772.magicmirrors.common.util.TeleportUtil;
 import net.minecraft.entity.LivingEntity;
