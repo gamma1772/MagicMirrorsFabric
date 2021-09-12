@@ -12,7 +12,7 @@
   "info.magicmirrors.power": "This mirror is not powerful enough for cross-dimensional travel!",
 
   "subtitle.magicmirrors.teleport": "Teleport",
-  "subtitle.magicmirrors.mirror_discharge": "Mirror Discharge",
+  "subtitle.magicmirrors.mirror_fail": "Mirror teleportation failed",
 
   "itemGroup.magic_mirrors": "Magic Mirrors"
 }
