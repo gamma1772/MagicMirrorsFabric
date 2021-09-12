@@ -6,7 +6,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ChunkTicketType;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.registry.RegistryKey;
@@ -26,16 +25,10 @@ public class Teleporter {
         if (canTraverseDimensions) {
             TeleportUtil.changeDimension(playerEntity, destination, spawnPoint);
             TeleportUtil.teleportToPos(playerEntity, spawnPoint);
-
-            //player.sendMessage(new TranslatableText("info.magicmirrors.dimension_traverse"), true);
         }
         else {
             if (player.getSpawnPointDimension().equals(serverWorld.getRegistryKey())) {
                 TeleportUtil.teleportToPos(playerEntity, spawnPoint);
-                //player.sendMessage(new TranslatableText("info.magicmirrors.local_teleport"), true);
-            }
-            else {
-                //player.sendMessage(new TranslatableText("info.magicmirrors.dimension"), true);
             }
         }
 
