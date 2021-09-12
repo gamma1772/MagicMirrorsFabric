@@ -1,14 +1,14 @@
 {
   "mirror_warp": {
-    "subtitle": "subtitle.magicmirror.teleport",
+    "subtitle": "subtitle.magicmirrors.teleport",
     "sounds": [
-      "magicmirror:mirror_warp"
+      "magicmirrors:mirror_warp"
     ]
   },
   "mirror_fail": {
-    "subtitle": "subtitle.magicmirror.mirror_fail",
+    "subtitle": "subtitle.magicmirrors.mirror_fail",
     "sounds": [
-      "magicmirror:mirror_fail"
+      "magicmirrors:mirror_fail"
     ]
   }
 }

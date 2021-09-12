@@ -42,7 +42,11 @@ public class MagicMirrorItem extends Item {
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         Random rand = user.world.random;
         for (int i = 0; i < 25; i++) {
-            //TODO: Add particles while using the mirror.
+            user.world.addParticle(ModContent.MIRROR_PARTICLE,
+                    user.getX() + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
+                    user.getY() + rand.nextFloat() * 3 - 2,
+                    user.getZ() + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
+                    -2, -0.100D, -2);
         }
     }
 
