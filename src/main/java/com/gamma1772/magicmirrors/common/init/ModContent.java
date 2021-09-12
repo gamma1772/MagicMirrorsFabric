@@ -4,6 +4,8 @@ import com.gamma1772.magicmirrors.common.content.item.MagicMirrorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 public class ModContent {
@@ -12,4 +14,7 @@ public class ModContent {
 
     public static final Item MAGIC_MIRROR = new MagicMirrorItem(MIRROR_SETTINGS, false);
     public static final Item DIMENSIONAL_MIRROR = new MagicMirrorItem(DIMENSIONAL_MIRROR_SETTINGS, true);
+
+    public static SoundEvent MIRROR_WARP = new SoundEvent(new Identifier("magicmirrors:mirror_warp"));
+    public static SoundEvent MIRROR_FAIL = new SoundEvent(new Identifier("magicmirrors:mirror_fail"));
 }

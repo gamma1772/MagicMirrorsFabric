@@ -1,11 +1,13 @@
 package com.gamma1772.magicmirrors.common.content.item;
 
 import com.gamma1772.magicmirrors.api.util.teleport.Teleporter;
+import com.gamma1772.magicmirrors.common.init.ModContent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
@@ -53,24 +55,17 @@ public class MagicMirrorItem extends Item {
         RegistryKey<World> spawnWorldKey = player.getSpawnPointDimension(); //Gets the respawn dimension
         BlockPos currentPos = player.getBlockPos();
         ((ServerPlayerEntity) user).getItemCooldownManager().set(this, cooldown);
-        if (spawnPos != null)
-        {
+
+        if (spawnPos != null) {
             Teleporter.teleportToSpawnPoint(player, world, canTraverseDimensions);
-//            if (world.getRegistryKey() == spawnWorldKey) {
-//
-//
-//                //world.playSound(null, currentPos.getX(), currentPos.getY(), currentPos.getZ(), SoundInit.TELEPORT.get(), SoundCategory.PLAYERS, 1f, 1f);
-//                //world.playSound(null, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), SoundInit.TELEPORT.get(), SoundCategory.PLAYERS, 1f, 1f);
-//            }
-//            else {
-//                //player.sendStatusMessage(new TranslationTextComponent("info.magicmirror.power"), true);
-//                //world.playSound(null, currentPos.getX(), currentPos.getY(), currentPos.getZ(), SoundInit.MIRROR_DISCHARGE.get(), SoundCategory.PLAYERS, 1f, 1f);
-//            }
+            if (!world.isClient) {
+                world.playSound(null, player.getX(), player.getY(), player.getZ(), ModContent.MIRROR_WARP, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                world.playSound(null, spawnPos, ModContent.MIRROR_WARP, SoundCategory.PLAYERS, 1.0f, 1.0f);
+            }
         }
-        else
-        {
+        else {
             player.sendMessage(new TranslatableText("info.magicmirrors.spawn_not_found"), true);
-            //world.playSound(null, currentPos.getX(), currentPos.getY(), currentPos.getZ(), SoundInit.MIRROR_DISCHARGE.get(), SoundCategory.PLAYERS, 1f, 1f);
+            world.playSound(null, player.getX(), player.getY(), player.getZ(), ModContent.MIRROR_FAIL, SoundCategory.PLAYERS, 1.0f, 1.0f);
         }
         return stack;
     }
