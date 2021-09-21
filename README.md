@@ -1,5 +1,5 @@
 # Magic Mirrors [FABRIC]
-
+<p align=center><a href="https://modrinth.com/mod/fabric-api"><img src="https://imgur.com/wsOy56a.png" height=25% width=25%></a></p>
 ## About
 
 This project is a rewrite of the Forge mod 'Magic Mirrors'
