@@ -41,7 +41,7 @@ public final class TeleportUtil {
         }
         player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, ticketPos, 1, player.getId());
 
-        player.requestTeleport(pos.getX(), pos.getY(), pos.getZ());
+        player.requestTeleport(pos.getX(), pos.getY() + 0.6f, pos.getZ());
     }
 
     public static void teleportToPos(LivingEntity livingEntity, BlockPos pos) {

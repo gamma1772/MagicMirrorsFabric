@@ -7,9 +7,10 @@
   "item.magicmirrors.mirror_frame": "Mirror Frame",
   "item.magicmirrors.enchanted_mirror": "Enchanted Mirror",
 
-
-  "info.magicmirrors.spawnNotFound": "Spawn point not found!",
+  "info.magicmirrors.teleport": "Teleporting...",
+  "info.magicmirrors.spawn_not_found": "Spawn point not found!",
   "info.magicmirrors.power": "This mirror is not powerful enough for cross-dimensional travel!",
+  "info.magicmirrors.undefined": "Undefined message",
 
   "subtitle.magicmirrors.teleport": "Teleport",
   "subtitle.magicmirrors.mirror_fail": "Mirror teleportation failed",
