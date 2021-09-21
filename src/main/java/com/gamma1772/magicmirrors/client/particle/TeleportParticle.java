@@ -27,7 +27,8 @@ public class TeleportParticle extends SpriteBillboardParticle {
         this.startZ = this.z;
         this.scale = 0.1F * (this.random.nextFloat() * 0.2F + 0.5F);
         //float j = this.random.nextFloat() * 0.6F + 0.4F;
-        this.colorRed = 0;
+        /*Color values are from 0 to 1. To convert from integer 0-255 values to float 0-1, division with 255 is required.*/
+        this.colorRed = 0 / 255F;
         this.colorGreen = 222 / 255F;
         this.colorBlue = 255 / 255F;
         this.maxAge = (int)(Math.random() * 10.0D) + 40;
@@ -73,7 +74,7 @@ public class TeleportParticle extends SpriteBillboardParticle {
             this.markDead();
         } else {
             float f = (float)this.age / (float)this.maxAge;
-            this.velocityY += 0.04F;
+            this.velocityY += 0.07F;
 
             if (this.y == this.prevPosY) {
                 this.velocityX *= 0.5F;
@@ -85,7 +86,7 @@ public class TeleportParticle extends SpriteBillboardParticle {
             f = 1.0F - f;
 
             this.velocityX *= 0.5D * f;
-            this.velocityY *= 0.5D * f;
+            this.velocityY *= 0.75D * f;
             this.velocityZ *= 0.5D * f;
 
             this.x = this.startX + this.velocityX * (double)f;
@@ -108,76 +109,4 @@ public class TeleportParticle extends SpriteBillboardParticle {
             return particle;
         }
     }
-    /*private static final Random RAND = new Random();
-    protected final SpriteProvider provider;
-
-    private TeleportParticle(SpriteProvider provider, ClientWorld clientWorld, double x, double y, double z, double speedX, double speedY, double speedZ) {
-        super(clientWorld, x, y, z, 0.5D - RAND.nextDouble(), speedY, 0.5D - RAND.nextDouble());
-        this.provider = provider;
-        this.velocityY *= 0.15D;
-        if(speedX == 0.0D && speedZ == 0.0D) {
-            this.velocityX *= 0.5D;
-            this.velocityZ *= 0.5D;
-        }
-        this.scale *= 1.3F;
-        this.maxAge = (int)(7.5D / (Math.random() * 0.2D + 0.1D)); //was 7.5 0.4 and 0.2
-        this.collidesWithWorld = false;
-    }
-
-    @Override
-    public void tick() {
-        this.prevPosX = this.x;
-        this.prevPosY = this.y;
-        this.prevPosZ = this.z;
-        if(this.age++ >= this.maxAge){
-            this.markDead();
-        }else{
-            this.setSpriteForAge(this.provider);
-            this.velocityY += 0.04D;
-            this.move(this.velocityX, this.velocityY, this.velocityZ);
-            if(this.y == this.prevPosY){
-                this.velocityX *= 0.5D;
-                this.velocityZ *= 0.5D;
-            }
-            this.velocityX *= 0.5D;
-            this.velocityY *= 0.5D;
-            this.velocityZ *= 0.5D;
-            if (this.onGround) {
-                this.velocityX *= 0.5D;
-                this.velocityZ *= 0.5D;
-            }
-        }
-    }
-
-    @Override
-    public ParticleTextureSheet getType() {
-        return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
-    }
-
-//    @Override
-//    protected int getBrightness(float tint) {
-//        float f = ((float) this.age + tint) / (float) this.maxAge;
-//        f = MathHelper.clamp(f, 0f, 1f);
-//        int i = super.getBrightness(tint);
-//        int j = i & 255;
-//        int k = i >> 16 & 255;
-//        j = j + (int) (f * 15f * 16f);
-//        if (j > 240) {
-//            j = 240;
-//        }
-//        return j | k << 16;    }
-
-    public static class Factory implements ParticleFactory<DefaultParticleType> {
-        private final SpriteProvider spriteProvider;
-
-        public Factory(SpriteProvider spriteProvider) {
-            this.spriteProvider = spriteProvider;
-        }
-
-        public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double x, double z, double y, double speedX, double speedY, double speedZ) {
-            TeleportParticle particle = new TeleportParticle(this.spriteProvider ,clientWorld, x, y, z, speedX, speedY, speedZ);
-            particle.setSprite(spriteProvider);
-            return particle;
-        }
-    }*/
 }
