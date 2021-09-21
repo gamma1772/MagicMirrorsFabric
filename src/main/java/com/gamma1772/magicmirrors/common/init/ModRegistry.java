@@ -1,6 +1,8 @@
 package com.gamma1772.magicmirrors.common.init;
 
 import com.gamma1772.magicmirrors.MagicMirrors;
+import com.gamma1772.magicmirrors.client.particle.TeleportParticle;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 

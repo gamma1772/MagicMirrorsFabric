@@ -1,5 +1,9 @@
 {
   "textures": [
-    "magicmirrors:mirror_particle"
+    "magicmirrors:mystic_0",
+    "magicmirrors:mystic_1",
+    "magicmirrors:mystic_2",
+    "magicmirrors:mystic_3",
+    "magicmirrors:mystic_4"
   ]
 }

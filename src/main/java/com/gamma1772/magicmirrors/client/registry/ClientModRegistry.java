@@ -14,10 +14,9 @@ public class ClientModRegistry {
         registerParticles();
     }
 
-    private static void registerParticles() {
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.PARTICLE_ATLAS_TEXTURE).register((((atlasTexture, registry) ->
-                registry.register(new Identifier(MagicMirrors.MODID, "particle/mirror_particle")))));
+    public static void registerParticles() {
 
-        ParticleFactoryRegistry.getInstance().register(ModContent.MIRROR_PARTICLE, TeleportParticle.Factory::new);
+
+
     }
 }

@@ -2,10 +2,13 @@ package com.gamma1772.magicmirrors.common.content.item;
 
 import com.gamma1772.magicmirrors.api.util.teleport.Teleporter;
 import com.gamma1772.magicmirrors.common.init.ModContent;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.TranslatableText;
@@ -19,6 +22,7 @@ import java.util.Random;
 public class MagicMirrorItem extends Item {
     private final boolean canTraverseDimensions;
     private final int cooldown;
+    private BlockPos spawnPos;
     public MagicMirrorItem(Settings settings, boolean canTraverseDimensions) {
         super(settings);
         this.canTraverseDimensions = canTraverseDimensions;
@@ -41,12 +45,18 @@ public class MagicMirrorItem extends Item {
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         Random rand = user.world.random;
+
         for (int i = 0; i < 25; i++) {
-            user.world.addParticle(ModContent.MIRROR_PARTICLE,
-                    user.getX() + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
-                    user.getY() + rand.nextFloat() * 3 - 2,
-                    user.getZ() + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
-                    -2, -0.100D, -2);
+            user.world.addParticle((ParticleEffect) ModContent.MIRROR_PARTICLE,
+                    user.prevX + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
+                    user.prevY + rand.nextFloat() * 3 - 2,
+                    user.prevZ + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
+                    -1, -0.105D, -1);
+            /*user.world.addParticle(ModContent.MIRROR_PARTICLE,
+                    spawnPos.getX() + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
+                    spawnPos.getY() + rand.nextFloat() * 3 - 2,
+                    spawnPos.getZ() + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
+                    -0.2, -0.100D, -0.2);*/
         }
     }
 
@@ -56,15 +66,23 @@ public class MagicMirrorItem extends Item {
 
         ServerPlayerEntity player = (ServerPlayerEntity) user; //casting serverPlayer to entity
         BlockPos spawnPos = player.getSpawnPointPosition(); //Gets user's respawn position
-        RegistryKey<World> spawnWorldKey = player.getSpawnPointDimension(); //Gets the respawn dimension
-        BlockPos currentPos = player.getBlockPos();
+        this.spawnPos = spawnPos;
         ((ServerPlayerEntity) user).getItemCooldownManager().set(this, cooldown);
 
         if (spawnPos != null) {
-            Teleporter.teleportToSpawnPoint(player, world, canTraverseDimensions);
-            if (!world.isClient) {
-                world.playSound(null, player.getX(), player.getY(), player.getZ(), ModContent.MIRROR_WARP, SoundCategory.PLAYERS, 1.0f, 1.0f);
-                world.playSound(null, spawnPos, ModContent.MIRROR_WARP, SoundCategory.PLAYERS, 1.0f, 1.0f);
+            switch (Teleporter.teleportToSpawnPoint(player, world, canTraverseDimensions)) {
+                case 0, 1, 2 -> {
+                    player.sendMessage(new TranslatableText("info.magicmirrors.teleport"), true);
+                    if (!world.isClient) {
+                        world.playSound(null, player.getX(), player.getY(), player.getZ(), ModContent.MIRROR_WARP, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                        world.playSound(null, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), ModContent.MIRROR_WARP, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                    }
+                }
+                case 3 -> {
+                    player.sendMessage(new TranslatableText("info.magicmirrors.power"), true);
+                    world.playSound(null, player.getX(), player.getY(), player.getZ(), ModContent.MIRROR_FAIL, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                }
+                default -> player.sendMessage(new TranslatableText("info.magicmirrors.undefined"), true);
             }
         }
         else {
@@ -74,6 +92,7 @@ public class MagicMirrorItem extends Item {
         return stack;
     }
 
+    /**Usage animation*/
     @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BOW;
