@@ -1,9 +1,19 @@
-# Fabric Example Mod
+# Magic Mirrors [FABRIC]
 
-## Setup
+## About
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+This project is a rewrite of the Forge mod 'Magic Mirrors'
+It allows a player to teleport to its spawn point using a magic mirror, however, for dimensional travel,an upgrade to the mirror is required. To upgrade the mirror, you will require a Dimensional Crystal, which can be crafted using a netherite ingot and soul soil.
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+```This project is available under the MIT License```
+
+## TODOs
+
+```
+    - Configuration
+    - Loot tables
+    - Teleportation events
+    - More usages for mirrors
+```
