@@ -48,15 +48,10 @@ public class MagicMirrorItem extends Item {
 
         for (int i = 0; i < 25; i++) {
             user.world.addParticle((ParticleEffect) ModContent.MIRROR_PARTICLE,
-                    user.prevX + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
+                    user.prevX + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
                     user.prevY + rand.nextFloat() * 3 - 2,
-                    user.prevZ + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
-                    -1, -0.105D, -1);
-            /*user.world.addParticle(ModContent.MIRROR_PARTICLE,
-                    spawnPos.getX() + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
-                    spawnPos.getY() + rand.nextFloat() * 3 - 2,
-                    spawnPos.getZ() + (rand.nextBoolean() ? -0.5 : 0.5) * Math.pow(rand.nextFloat(), 2) * 2,
-                    -0.2, -0.100D, -0.2);*/
+                    user.prevZ + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
+                    -2, 0.2D, -2);
         }
     }
 
