@@ -14,9 +14,12 @@ public class ModRegistry {
     }
 
     private static void registerItems() {
-        //Registry.register(Registry.ITEM, new Identifier(MagicMirrors.MODID, "magic_mirror"), ModContent.MAGIC_MIRROR);
         Registry.register(Registry.ITEM, new Identifier(MagicMirrors.MODID, "magic_mirror"), ModContent.MAGIC_MIRROR);
         Registry.register(Registry.ITEM, new Identifier(MagicMirrors.MODID, "dimensional_mirror"), ModContent.DIMENSIONAL_MIRROR);
+
+        Registry.register(Registry.ITEM, new Identifier(MagicMirrors.MODID, "enchanted_mirror"), ModContent.ENCHANTED_MIRROR);
+        Registry.register(Registry.ITEM, new Identifier(MagicMirrors.MODID, "mirror_frame"), ModContent.MIRROR_FRAME);
+        Registry.register(Registry.ITEM, new Identifier(MagicMirrors.MODID, "dimension_crystal"), ModContent.DIMENSION_CRYSTAL);
     }
 
     private static void registerSounds() {
