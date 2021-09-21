@@ -8,11 +8,11 @@
   {
     "M":
     {
-      "item": "magicmirror:enchanted_mirror"
+      "item": "magicmirrors:enchanted_mirror"
     },
     "F":
     {
-      "item": "magicmirror:mirror_frame"
+      "item": "magicmirrors:mirror_frame"
     },
     "R":
     {
@@ -21,7 +21,7 @@
   },
   "result":
   {
-    "item": "magicmirror:magic_mirror",
+    "item": "magicmirrors:magic_mirror",
     "count": 1
   }
 }

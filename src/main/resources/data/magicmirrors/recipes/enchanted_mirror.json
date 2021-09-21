@@ -14,7 +14,7 @@
     },
     "I":
     {
-      "tag": "forge:nuggets/iron"
+      "tag": "minecraft:iron_nugget"
     },
     "E":
     {
@@ -23,7 +23,7 @@
   },
   "result":
   {
-    "item": "magicmirror:enchanted_mirror",
+    "item": "magicmirrors:enchanted_mirror",
     "count": 1
   }
 }

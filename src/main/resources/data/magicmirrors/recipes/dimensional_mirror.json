@@ -2,15 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "magicmirror:magic_mirror"
+      "item": "magicmirrors:magic_mirror"
     },
     {
-      "item": "magicmirror:dimension_crystal"
+      "item": "magicmirrors:dimension_crystal"
     }
   ],
   "result":
   {
-    "item": "magicmirror:dimensional_mirror",
+    "item": "magicmirrors:dimensional_mirror",
     "count": 1
   }
 }

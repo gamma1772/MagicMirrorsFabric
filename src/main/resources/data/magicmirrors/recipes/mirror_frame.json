@@ -10,16 +10,16 @@
   {
     "I":
     {
-      "tag": "forge:nuggets/iron"
+      "tag": "minecraft:iron_nugget"
     },
     "N":
     {
-      "tag": "forge:ingots/iron"
+      "tag": "minecraft:iron_ingot"
     }
   },
   "result":
   {
-    "item": "magicmirror:mirror_frame",
+    "item": "magicmirrors:mirror_frame",
     "count": 1
   }
 }
