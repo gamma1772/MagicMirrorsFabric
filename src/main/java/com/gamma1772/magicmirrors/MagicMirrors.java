@@ -23,6 +23,7 @@ SOFTWARE.*/
 package com.gamma1772.magicmirrors;
 
 import com.gamma1772.magicmirrors.common.init.ModRegistry;
+import com.terraformersmc.modmenu.ModMenu;
 import net.fabricmc.api.ModInitializer;
 
 public class MagicMirrors implements ModInitializer {

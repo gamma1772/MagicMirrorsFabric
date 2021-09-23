@@ -23,6 +23,9 @@
     ],
     "client": [
       "com.gamma1772.magicmirrors.client.MagicMirrorsClient"
+    ],
+    "modmenu": [
+      "com.gamma1772.magicmirrors.client.gui.ModMenuIntegration"
     ]
   },
 

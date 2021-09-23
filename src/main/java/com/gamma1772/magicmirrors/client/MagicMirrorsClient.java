@@ -30,7 +30,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 public class MagicMirrorsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-
+        MagicMirrorsConfig.init();
         ParticleFactoryRegistry.getInstance().register(ModContent.MIRROR_PARTICLE, TeleportParticle.Factory::new);
     }
 }
