@@ -38,17 +38,19 @@ import net.minecraft.world.World;
 
 public final class TeleportUtil {
 
-    public static boolean changeDimensionsAndTeleport(PlayerEntity playerEntity, World destinationWorld, BlockPos spawnPoint) {
+    public static boolean changeDimensionsAndTeleport(PlayerEntity playerEntity, World destinationWorld, BlockPos blockPos) {
         ServerPlayerEntity player = (ServerPlayerEntity) playerEntity;
         ServerWorld destination = (ServerWorld) destinationWorld;
 
-        Vec3d spawnVector = new Vec3d(spawnPoint.getX(), spawnPoint.getY(), spawnPoint.getZ());
+        Vec3d posVector = new Vec3d(blockPos.getX() + 0.5F, blockPos.getY() + MagicMirrorsConfig.INSTANCE.heightAdjustment, blockPos.getZ() + 0.5F);
 
-        TeleportTarget teleportTarget = new TeleportTarget(spawnVector, spawnVector, player.getYaw(), player.getPitch());
+        TeleportTarget teleportTarget = new TeleportTarget(posVector, posVector, player.getYaw(), player.getPitch());
 
         if (player.getServerWorld().getRegistryKey() != destination.getRegistryKey()) {
-            player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, new ChunkPos(new BlockPos(spawnPoint)), 1, player.getId());
-
+            ChunkPos ticketPos = new ChunkPos(new BlockPos(blockPos));
+            player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, ticketPos, 1, player.getId());
+            player.world.getChunk(ticketPos.x, ticketPos.z);
+            player.fallDistance = 0;
             FabricDimensions.teleport(player, destination, teleportTarget);
             return true;
         }
@@ -57,17 +59,20 @@ public final class TeleportUtil {
         }
     }
 
-    public static boolean changeDimensions(PlayerEntity playerEntity, World destinationWorld, BlockPos spawnPoint) {
+    public static boolean changeDimensions(PlayerEntity playerEntity, World destinationWorld, BlockPos blockPos) {
         ServerPlayerEntity player = (ServerPlayerEntity) playerEntity;
         ServerWorld destination = (ServerWorld) destinationWorld;
 
-        Vec3d spawnVector = new Vec3d(spawnPoint.getX(), spawnPoint.getY(), spawnPoint.getZ());
+        Vec3d posVector = new Vec3d(blockPos.getX() + 0.5F, blockPos.getY() + MagicMirrorsConfig.INSTANCE.heightAdjustment, blockPos.getZ() + 0.5F);
 
-        TeleportTarget teleportTarget = new TeleportTarget(spawnVector, spawnVector, player.getYaw(), player.getPitch());
+        TeleportTarget teleportTarget = new TeleportTarget(posVector, posVector, player.getYaw(), player.getPitch());
 
         if (player.getServerWorld().getRegistryKey() != destination.getRegistryKey()) {
-            player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, new ChunkPos(new BlockPos(spawnPoint)), 1, player.getId());
+            ChunkPos ticketPos = new ChunkPos(new BlockPos(blockPos));
 
+            player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, ticketPos, 1, player.getId());
+            player.world.getChunk(ticketPos.x, ticketPos.z);
+            player.fallDistance = 0;
             FabricDimensionInternals.changeDimension(player, destination, teleportTarget);
             return true;
         }
@@ -83,7 +88,8 @@ public final class TeleportUtil {
             player.dismountVehicle();
         }
         player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, ticketPos, 1, player.getId());
-
+        player.world.getChunk(ticketPos.x, ticketPos.z);
+        player.fallDistance = 0;
         player.requestTeleport(pos.getX() + 0.5F, pos.getY() + MagicMirrorsConfig.INSTANCE.heightAdjustment, pos.getZ() + 0.5F); //0.5F is used to center the player on a block, instead of teleporting to the edge of the block
     }
 
@@ -91,8 +97,9 @@ public final class TeleportUtil {
         ServerWorld serverWorld = (ServerWorld) livingEntity.getEntityWorld();
         ChunkPos ticketPos = new ChunkPos(new BlockPos(pos));
 
-        serverWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, new ChunkPos(new BlockPos(pos)), 1, livingEntity.getId());
-
+        serverWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, ticketPos, 1, livingEntity.getId());
+        livingEntity.fallDistance = 0;
+        livingEntity.world.getChunk(ticketPos.x, ticketPos.z);
         livingEntity.requestTeleport(pos.getX(), pos.getY(), pos.getZ());
     }
 }
