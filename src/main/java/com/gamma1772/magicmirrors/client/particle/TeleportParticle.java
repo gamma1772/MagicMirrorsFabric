@@ -22,23 +22,19 @@ SOFTWARE.*/
 
 package com.gamma1772.magicmirrors.client.particle;
 
-import com.gamma1772.magicmirrors.MagicMirrors;
 import com.gamma1772.magicmirrors.client.MagicMirrorsConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.util.math.MathHelper;
-
-import java.util.Random;
 
 public class TeleportParticle extends SpriteBillboardParticle {
     private final double startX;
     private final double startY;
     private final double startZ;
 
-    private final int colorR, colorG, colorB;
+    protected int colorR, colorG, colorB;
 
     protected TeleportParticle(ClientWorld clientWorld, double posX, double posY, double posZ, double speedX, double speedY, double speedZ) {
         super(clientWorld, posX, posY, posZ, speedX, speedY, speedZ);
@@ -137,5 +133,9 @@ public class TeleportParticle extends SpriteBillboardParticle {
             particle.setSprite(this.spriteProvider);
             return particle;
         }
+    }
+
+    public String getRGBColorValue() {
+        return String.format("RGB: [%d;%d;%d]", colorR, colorG, colorB);
     }
 }
