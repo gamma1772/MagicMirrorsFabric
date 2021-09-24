@@ -22,6 +22,7 @@ SOFTWARE.*/
 
 package com.gamma1772.magicmirrors.common.util;
 
+import com.gamma1772.magicmirrors.client.MagicMirrorsConfig;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.fabricmc.fabric.impl.dimension.FabricDimensionInternals;
 import net.minecraft.entity.LivingEntity;
@@ -83,7 +84,7 @@ public final class TeleportUtil {
         }
         player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, ticketPos, 1, player.getId());
 
-        player.requestTeleport(pos.getX(), pos.getY() + 0.6f, pos.getZ());
+        player.requestTeleport(pos.getX() + 0.5F, pos.getY() + MagicMirrorsConfig.INSTANCE.heightAdjustment, pos.getZ() + 0.5F); //0.5F is used to center the player on a block, instead of teleporting to the edge of the block
     }
 
     public static void teleportToPos(LivingEntity livingEntity, BlockPos pos) {
