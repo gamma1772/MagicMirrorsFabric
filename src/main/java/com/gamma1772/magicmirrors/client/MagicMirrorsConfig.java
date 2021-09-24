@@ -41,6 +41,7 @@ public class MagicMirrorsConfig implements ConfigData {
         INSTANCE = AutoConfig.getConfigHolder(MagicMirrorsConfig.class).getConfig();
     }
 
+    //Particle config
     @Comment("Red color of teleport particle (0 - 255)")
     public int colorRed = 0;
 
@@ -50,6 +51,20 @@ public class MagicMirrorsConfig implements ConfigData {
     @Comment("Blue color of teleport particle (0 - 255)")
     public int colorBlue = 255;
 
+    @Comment("Red color of teleport particle for dimensional teleport (0 - 255)")
+    public int colorRedDimensional = 0;
+
+    @Comment("Green color of teleport particle for dimensional teleport (0 - 255)")
+    public int colorGreenDimensional = 222;
+
+    @Comment("Blue color of teleport particle for dimensional teleport (0 - 255)")
+    public int colorBlueDimensional = 255;
+
     @Comment("Enable or disable particles on mirror usage")
     public boolean enableParticles = true;
+
+
+    //Teleport config
+    @Comment("How high above the block should the player teleport? (DANGEROUS)/nRecommended values between 0.0 and 1.5, values higher than 3 can cause fall damage")
+    public double heightAdjustment = 0.6;
 }

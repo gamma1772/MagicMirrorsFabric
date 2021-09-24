@@ -64,12 +64,22 @@ public class MagicMirrorItem extends Item {
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         Random rand = user.world.random;
 
-        for (int i = 0; i < 25; i++) {
-            user.world.addParticle((ParticleEffect) ModContent.MIRROR_PARTICLE,
-                    user.prevX + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
-                    user.prevY + rand.nextFloat() * 3 - 2,
-                    user.prevZ + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
-                    -2, 0.2D, -2);
+        if (canTraverseDimensions) {
+            for (int i = 0; i < 50; i++) {
+                user.world.addParticle((ParticleEffect) ModContent.DIMENSIONAL_MIRROR_PARTICLE,
+                        user.prevX + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
+                        user.prevY + rand.nextFloat() * 3 - 2,
+                        user.prevZ + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
+                        -2, 0.2D, -2);
+            }
+        } else {
+            for (int i = 0; i < 50; i++) {
+                user.world.addParticle((ParticleEffect) ModContent.MIRROR_PARTICLE,
+                        user.prevX + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
+                        user.prevY + rand.nextFloat() * 3 - 2,
+                        user.prevZ + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
+                        -2, 0.2D, -2);
+            }
         }
     }
 
