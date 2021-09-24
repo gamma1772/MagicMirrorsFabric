@@ -22,11 +22,7 @@ SOFTWARE.*/
 
 package com.gamma1772.magicmirrors;
 
-import com.gamma1772.magicmirrors.client.MagicMirrorsConfig;
 import com.gamma1772.magicmirrors.common.init.ModRegistry;
-import com.terraformersmc.modmenu.ModMenu;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.ConfigHolder;
 import net.fabricmc.api.ModInitializer;
 
 public class MagicMirrors implements ModInitializer {
