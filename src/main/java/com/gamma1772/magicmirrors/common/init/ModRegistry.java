@@ -50,5 +50,6 @@ public class ModRegistry {
 
     private static void registerParticles() {
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(MagicMirrors.MODID, "mirror_particle"), ModContent.MIRROR_PARTICLE);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(MagicMirrors.MODID, "dimensional_mirror_particle"), ModContent.DIMENSIONAL_MIRROR_PARTICLE);
     }
 }

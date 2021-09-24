@@ -49,4 +49,5 @@ public class ModContent {
     public static SoundEvent MIRROR_FAIL = new SoundEvent(new Identifier("magicmirrors:mirror_fail"));
 
     public static final ParticleType<DefaultParticleType> MIRROR_PARTICLE = FabricParticleTypes.simple();
+    public static final ParticleType<DefaultParticleType> DIMENSIONAL_MIRROR_PARTICLE = FabricParticleTypes.simple();
 }
