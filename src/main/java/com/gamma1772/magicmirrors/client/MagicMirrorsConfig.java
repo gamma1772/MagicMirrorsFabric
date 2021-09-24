@@ -41,30 +41,62 @@ public class MagicMirrorsConfig implements ConfigData {
         INSTANCE = AutoConfig.getConfigHolder(MagicMirrorsConfig.class).getConfig();
     }
 
+    //General config
+
+    public int mirrorCooldown = 200;
+
+    @Comment("Enabling options from debug menu. Without this enabled, debug options will be active")
+    public boolean enableDebugging = false;
+
     //Particle config
+    @ConfigEntry.Category("particles")
     @Comment("Red color of teleport particle (0 - 255)")
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 255)
     public int colorRed = 0;
 
+    @ConfigEntry.Category("particles")
     @Comment("Green color of teleport particle (0 - 255)")
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 255)
     public int colorGreen = 222;
 
+    @ConfigEntry.Category("particles")
     @Comment("Blue color of teleport particle (0 - 255)")
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 255)
     public int colorBlue = 255;
 
+    @ConfigEntry.Category("particles")
+    @ConfigEntry.Gui.PrefixText
     @Comment("Red color of teleport particle for dimensional teleport (0 - 255)")
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 255)
     public int colorRedDimensional = 0;
 
+    @ConfigEntry.Category("particles")
     @Comment("Green color of teleport particle for dimensional teleport (0 - 255)")
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 255)
     public int colorGreenDimensional = 222;
 
+    @ConfigEntry.Category("particles")
     @Comment("Blue color of teleport particle for dimensional teleport (0 - 255)")
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 255)
     public int colorBlueDimensional = 255;
 
-    @Comment("Enable or disable particles on mirror usage")
+    @ConfigEntry.Category("particles")
+    @Comment("Enable or disable particles on mirror usage. Particles are still registered and can be used with /particle command.")
     public boolean enableParticles = true;
+
+    @ConfigEntry.Category("particles")
+    @Comment("How much particles should spawn during mirror usage tick. A large value can cause low FPS and possibly TPS")
+    public int particleCount = 30;
 
 
     //Teleport config
-    @Comment("How high above the block should the player teleport? (DANGEROUS)/nRecommended values between 0.0 and 1.5, values higher than 3 can cause fall damage")
+    @ConfigEntry.Category("teleportation")
+    @Comment("How high above the block should the player teleport? (DANGEROUS)/nRecommended values between 0.0 and 1.5, values higher than 3 can cause fall damage.")
     public double heightAdjustment = 0.6;
+
+    @ConfigEntry.Category("teleportation")
+    @Comment("Enable or disable dimensional teleports regardless of the used item")
+    public boolean allowDimensonalTravel = true;
+
+    //Debug config
 }
