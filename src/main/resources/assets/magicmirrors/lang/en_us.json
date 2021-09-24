@@ -1,5 +1,6 @@
 {
   "__author": "Gamma1772",
+  "__link": "https://github.com/Gamma1772",
 
   "item.magicmirrors.magic_mirror": "Magic Mirror",
   "item.magicmirrors.dimensional_mirror": "Dimensional Mirror",
@@ -18,7 +19,27 @@
 
   "itemGroup.magic_mirrors": "Magic Mirrors",
 
+  "text.autoconfig.magicmirrors.title": "Magic Mirrors configuration",
+
+  "text.autoconfig.magicmirrors.category.default": "General",
+  "text.autoconfig.magicmirrors.category.particles": "Particles",
+  "text.autoconfig.magicmirrors.category.teleportation": "Teleportation",
+  "text.autoconfig.magicmirrors.category.debug": "Debugging",
+
+  "text.autoconfig.magicmirrors.option.colorRed.@PrefixText": "Regular Particles",
+  "text.autoconfig.magicmirrors.option.colorRedDimensional.@PrefixText": "Dimensional Particles",
+
+  "text.autoconfig.magicmirrors.option.enableDebugging": "Enable options from debug category",
+
   "text.autoconfig.magicmirrors.option.colorRed": "Red color value",
   "text.autoconfig.magicmirrors.option.colorGreen": "Green color value",
-  "text.autoconfig.magicmirrors.option.colorBlue": "Blue color value"
+  "text.autoconfig.magicmirrors.option.colorBlue": "Blue color value",
+  "text.autoconfig.magicmirrors.option.colorRedDimensional": "Red color value",
+  "text.autoconfig.magicmirrors.option.colorGreenDimensional": "Green color value",
+  "text.autoconfig.magicmirrors.option.colorBlueDimensional": "Blue color value",
+  "text.autoconfig.magicmirrors.option.enableParticles": "Enable particles?",
+  "text.autoconfig.magicmirrors.option.particleCount": "Particle count per tick",
+
+  "text.autoconfig.magicmirrors.option.heightAdjustment": "Adjust teleportation arrival height",
+  "text.autoconfig.magicmirrors.option.allowDimensionalTravel": "Allow dimensional teleportations?"
 }
