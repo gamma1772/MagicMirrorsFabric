@@ -50,8 +50,8 @@ public class Teleporter {
         ServerWorld destination = ((ServerWorld) world).getServer().getWorld(spawnDimension);
 
         if (canTraverseDimensions) {
-            if(TeleportUtil.changeDimension(playerEntity, destination, spawnPoint)) {
-                TeleportUtil.teleportToPos(playerEntity, spawnPoint);
+            if(TeleportUtil.changeDimensionsAndTeleport(playerEntity, destination, spawnPoint)) {
+                //TeleportUtil.teleportToPos(playerEntity, spawnPoint);
                 return 0;
             } else {
                 TeleportUtil.teleportToPos(playerEntity, spawnPoint);

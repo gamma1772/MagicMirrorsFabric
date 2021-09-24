@@ -23,6 +23,7 @@ SOFTWARE.*/
 package com.gamma1772.magicmirrors.common.util;
 
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
+import net.fabricmc.fabric.impl.dimension.FabricDimensionInternals;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -36,7 +37,7 @@ import net.minecraft.world.World;
 
 public final class TeleportUtil {
 
-    public static boolean changeDimension(PlayerEntity playerEntity, World destinationWorld, BlockPos spawnPoint) {
+    public static boolean changeDimensionsAndTeleport(PlayerEntity playerEntity, World destinationWorld, BlockPos spawnPoint) {
         ServerPlayerEntity player = (ServerPlayerEntity) playerEntity;
         ServerWorld destination = (ServerWorld) destinationWorld;
 
@@ -48,6 +49,25 @@ public final class TeleportUtil {
             player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, new ChunkPos(new BlockPos(spawnPoint)), 1, player.getId());
 
             FabricDimensions.teleport(player, destination, teleportTarget);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public static boolean changeDimensions(PlayerEntity playerEntity, World destinationWorld, BlockPos spawnPoint) {
+        ServerPlayerEntity player = (ServerPlayerEntity) playerEntity;
+        ServerWorld destination = (ServerWorld) destinationWorld;
+
+        Vec3d spawnVector = new Vec3d(spawnPoint.getX(), spawnPoint.getY(), spawnPoint.getZ());
+
+        TeleportTarget teleportTarget = new TeleportTarget(spawnVector, spawnVector, player.getYaw(), player.getPitch());
+
+        if (player.getServerWorld().getRegistryKey() != destination.getRegistryKey()) {
+            player.getServerWorld().getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, new ChunkPos(new BlockPos(spawnPoint)), 1, player.getId());
+
+            FabricDimensionInternals.changeDimension(player, destination, teleportTarget);
             return true;
         }
         else {
