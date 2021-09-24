@@ -22,6 +22,7 @@ SOFTWARE.*/
 
 package com.gamma1772.magicmirrors.common.init;
 
+import com.gamma1772.magicmirrors.client.MagicMirrorsConfig;
 import com.gamma1772.magicmirrors.common.content.item.MagicMirrorItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;

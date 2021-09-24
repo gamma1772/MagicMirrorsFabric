@@ -29,6 +29,7 @@
   "text.autoconfig.magicmirrors.option.colorRed.@PrefixText": "Regular Particles",
   "text.autoconfig.magicmirrors.option.colorRedDimensional.@PrefixText": "Dimensional Particles",
 
+  "text.autoconfig.magicmirrors.option.mirrorCooldown": "Mirror cooldown in seconds",
   "text.autoconfig.magicmirrors.option.enableDebugging": "Enable options from debug category",
 
   "text.autoconfig.magicmirrors.option.colorRed": "Red color value",

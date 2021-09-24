@@ -72,13 +72,13 @@ public class Teleporter {
     /**
      * Teleports an entity to a spawn point.
      * */
-    public static void teleportEntityToSpawnPoint(LivingEntity entity, World world, BlockPos spawn) {
+    public static void teleportEntityToSpawnPoint(LivingEntity entity, World world, BlockPos blockPos) {
 
         ServerWorld serverWorld = (ServerWorld) world;
-        ChunkPos pos = new ChunkPos(new BlockPos(spawn));
+        ChunkPos pos = new ChunkPos(new BlockPos(blockPos));
 
         entity.stopRiding();
-        entity.setPosition(spawn.getX() + 0.5F, spawn.getY() + 0.5F, spawn.getZ() + 0.5F);
+        entity.setPosition(blockPos.getX() + 0.5F, blockPos.getY() + 0.5F, blockPos.getZ() + 0.5F);
         serverWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, pos, 1, entity.getId());
     }
 }

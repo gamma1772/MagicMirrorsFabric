@@ -42,8 +42,8 @@ public class MagicMirrorsConfig implements ConfigData {
     }
 
     //General config
-
-    public int mirrorCooldown = 200;
+    @Comment("How long should the mirrors cooldown be in seconds?")
+    public int mirrorCooldown = 10;
 
     @Comment("Enabling options from debug menu. Without this enabled, debug options will be active")
     public boolean enableDebugging = false;

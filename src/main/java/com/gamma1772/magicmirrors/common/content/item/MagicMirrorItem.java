@@ -41,21 +41,19 @@ import java.util.Random;
 
 public class MagicMirrorItem extends Item {
     private final boolean canTraverseDimensions;
-    private final int cooldown;
-    private final int particleCount;
+    //private final int cooldown;
+    //private final int particleCount = MagicMirrorsConfig.INSTANCE.particleCount;
 
     public MagicMirrorItem(Settings settings, boolean canTraverseDimensions) {
         super(settings);
         this.canTraverseDimensions = canTraverseDimensions;
-        this.cooldown = 200;
-        this.particleCount = MagicMirrorsConfig.INSTANCE.particleCount;
+        //this.cooldown = 200;
     }
 
     public MagicMirrorItem(Settings settings, boolean canTraverseDimensions, int cooldown) {
         super(settings);
         this.canTraverseDimensions = canTraverseDimensions;
-        this.cooldown = cooldown;
-        this.particleCount = MagicMirrorsConfig.INSTANCE.particleCount;
+        //this.cooldown = cooldown;
     }
 
     @Override
@@ -71,7 +69,7 @@ public class MagicMirrorItem extends Item {
             Random rand = user.world.random;
 
             if (canTraverseDimensions) {
-                for (int i = 0; i < particleCount; i++) {
+                for (int i = 0; i < MagicMirrorsConfig.INSTANCE.particleCount; i++) {
                     user.world.addParticle((ParticleEffect) ModContent.DIMENSIONAL_MIRROR_PARTICLE,
                             user.prevX + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
                             user.prevY + rand.nextFloat() * 3 - 2,
@@ -79,7 +77,7 @@ public class MagicMirrorItem extends Item {
                             -2, 0.2D, -2);
                 }
             } else {
-                for (int i = 0; i < particleCount; i++) {
+                for (int i = 0; i < MagicMirrorsConfig.INSTANCE.particleCount; i++) {
                     user.world.addParticle((ParticleEffect) ModContent.MIRROR_PARTICLE,
                             user.prevX + (rand.nextBoolean() ? -0.25 : 0.25) * Math.pow(rand.nextFloat(), 2) * 2,
                             user.prevY + rand.nextFloat() * 3 - 2,
@@ -96,7 +94,7 @@ public class MagicMirrorItem extends Item {
 
         ServerPlayerEntity player = (ServerPlayerEntity) user; //casting serverPlayer to entity
         BlockPos spawnPos = player.getSpawnPointPosition(); //Gets user's respawn position
-        ((ServerPlayerEntity) user).getItemCooldownManager().set(this, cooldown);
+        ((ServerPlayerEntity) user).getItemCooldownManager().set(this, MagicMirrorsConfig.INSTANCE.mirrorCooldown * 20);
 
         if (spawnPos != null) {
             switch (Teleporter.teleportToSpawnPoint(player, world, canTraverseDimensions)) {
