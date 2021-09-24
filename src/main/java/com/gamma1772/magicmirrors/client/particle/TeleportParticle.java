@@ -22,6 +22,8 @@ SOFTWARE.*/
 
 package com.gamma1772.magicmirrors.client.particle;
 
+import com.gamma1772.magicmirrors.MagicMirrors;
+import com.gamma1772.magicmirrors.client.MagicMirrorsConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
@@ -36,6 +38,8 @@ public class TeleportParticle extends SpriteBillboardParticle {
     private final double startY;
     private final double startZ;
 
+    private final int colorR, colorG, colorB;
+
     protected TeleportParticle(ClientWorld clientWorld, double posX, double posY, double posZ, double speedX, double speedY, double speedZ) {
         super(clientWorld, posX, posY, posZ, speedX, speedY, speedZ);
         this.velocityX = speedX;
@@ -47,12 +51,15 @@ public class TeleportParticle extends SpriteBillboardParticle {
         this.startX = this.x;
         this.startY = this.y;
         this.startZ = this.z;
+        this.colorR = MagicMirrorsConfig.INSTANCE.colorRed;
+        this.colorG = MagicMirrorsConfig.INSTANCE.colorGreen;
+        this.colorB = MagicMirrorsConfig.INSTANCE.colorBlue;
         this.scale = 0.1F * (this.random.nextFloat() * 0.2F + 0.5F);
         //float j = this.random.nextFloat() * 0.6F + 0.4F;
         /*Color values are from 0 to 1. To convert from integer 0-255 values to float 0-1, division with 255 is required.*/
-        this.colorRed = 0 / 255F;
-        this.colorGreen = 222 / 255F;
-        this.colorBlue = 255 / 255F;
+        this.colorRed = colorR / 255F; //0
+        this.colorGreen = colorG / 255F; //222
+        this.colorBlue = colorB / 255F; //255
         this.maxAge = (int)(Math.random() * 10.0D) + 40;
     }
 
