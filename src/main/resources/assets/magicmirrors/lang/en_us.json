@@ -16,5 +16,9 @@
   "subtitle.magicmirrors.teleport": "Teleport",
   "subtitle.magicmirrors.mirror_fail": "Mirror teleportation failed",
 
-  "itemGroup.magic_mirrors": "Magic Mirrors"
+  "itemGroup.magic_mirrors": "Magic Mirrors",
+
+  "text.autoconfig.magicmirrors.option.colorRed": "Red color value",
+  "text.autoconfig.magicmirrors.option.colorGreen": "Green color value",
+  "text.autoconfig.magicmirrors.option.colorBlue": "Blue color value"
 }
