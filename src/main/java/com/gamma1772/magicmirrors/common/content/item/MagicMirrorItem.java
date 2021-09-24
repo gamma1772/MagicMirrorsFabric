@@ -41,7 +41,6 @@ import java.util.Random;
 public class MagicMirrorItem extends Item {
     private final boolean canTraverseDimensions;
     private final int cooldown;
-    private BlockPos spawnPos;
     public MagicMirrorItem(Settings settings, boolean canTraverseDimensions) {
         super(settings);
         this.canTraverseDimensions = canTraverseDimensions;
@@ -80,7 +79,6 @@ public class MagicMirrorItem extends Item {
 
         ServerPlayerEntity player = (ServerPlayerEntity) user; //casting serverPlayer to entity
         BlockPos spawnPos = player.getSpawnPointPosition(); //Gets user's respawn position
-        this.spawnPos = spawnPos;
         ((ServerPlayerEntity) user).getItemCooldownManager().set(this, cooldown);
 
         if (spawnPos != null) {
